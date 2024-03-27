@@ -118,42 +118,43 @@ function AccountBalance() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <div className="container mx-auto">
+      <div className="container mx-auto flex justify-center mt-12 mb-12">
         {/* Grid wrapper */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="w-full max-w-xl">
 
         {/* Placeholder Card as the Dashboard */}
         <div className="bg-white p-12 rounded-lg shadow-lg space-y-6">
           <div className="flex justify-between items-center mb-4">
-            <h2 className="text-2xl font-bold text-gray-900">Dashboard</h2>
-            <img src="/logo512.png" alt="Logo" className="h-12 w-auto" />
+            <h2 className="text-2xl font-bold text-gray-900">Wallet Dashboard</h2>
+            <img src="/image.png" alt="Logo" className="h-12 w-auto" />
           </div>
           <div className="flex flex-col space-y-4">
           <button onClick={() => {}} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">Settings</button>
-            <button onClick={() => {}} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">About</button>
+          <button onClick={() => {}} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">Support</button>
+          <button onClick={() => {}} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">About</button>
           </div>
         </div>
 
-          {/* Account Balances Card */}
-          <div className="bg-white p-12 rounded-lg shadow-lg space-y-6">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">Account Balances</h2>
-            {balances.length > 0 ? (
-              <ul className="text-lg text-gray-700">
-                {balances.map((balance, index) => (
-                  <li key={index}>
-                    Account #{index}: <span className="font-semibold">{balance} ETH</span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="text-lg text-gray-700">Fetching balances...</p>
-            )}
-            <div className="flex flex-col space-y-4">
-              <button onClick={() => navigate('/money-transfer')} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">Transfer Money</button>
-              <button onClick={() => navigate('/transaction-statements')} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">View Transactions</button>
-              <button onClick={() => navigate('/')} className="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2">Logout</button>
-            </div>
+        {/* Account Balances Card */}
+        <div className="bg-white p-12 rounded-lg shadow-lg space-y-6 mt-10">
+          <h2 className="text-2xl font-bold mb-4 text-gray-900">Account Balances</h2>
+          {balances.length > 0 ? (
+            <ul className="text-lg text-gray-700">
+              {/* Display only the first balance */}
+              <li>
+                Current Balance: <span className="font-semibold">{balances[6]} ETH</span>
+              </li>
+            </ul>
+          ) : (
+            <p className="text-lg text-gray-700">Fetching balances...</p>
+          )}
+          <div className="flex flex-col space-y-4">
+            <button onClick={() => navigate('/money-transfer')} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">Transfer Money</button>
+            <button onClick={() => navigate('/transaction-statements')} className="px-6 py-2 bg-sky-900 hover:bg-sky-800 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-900 focus:ring-offset-2">View Transactions</button>
+            <button onClick={() => navigate('/')} className="px-6 py-2 bg-gray-600 hover:bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2">Logout</button>
           </div>
+        </div>
+
   
           {/* Graph Card */}
           <div className="bg-white p-12 mt-10 rounded-lg shadow-lg">

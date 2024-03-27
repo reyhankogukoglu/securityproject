@@ -13,16 +13,34 @@ function MoneyTransfer() {
   const [isTransactionConfirmed, setIsTransactionConfirmed] = useState(false);
   const [confirmedAmount, setConfirmedAmount] = useState('');
 
+  fetch('https://securityproject-418118.nn.r.appspot.com/profile', {
+    method: 'GET',
+    credentials: 'include', // Include cookies in the request
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json(); // Assuming the response is JSON
+  })
+  .then(data => {
+    // Handle the data received from the backend
+    console.log(data); // Or do something else with the data
+  })
+  .catch(error => {
+    console.error('There was a problem with the fetch operation:', error);
+  });
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setPrivateKey('0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d');
+    setPrivateKey('0x92db14e403b83dfe3df233f83dfa3a0d7096f21ca9b0d6d6b8d88b2b4ec1564e');
   
     // Connect to Ethereum network
     const provider = new JsonRpcProvider('http://localhost:8545');
     const accounts = await provider.listAccounts();
     const accountAddress = accounts[recipient];
-    const signer = new ethers.Wallet("0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d", provider);
+    const signer = new ethers.Wallet("0x92db14e403b83dfe3df233f83dfa3a0d7096f21ca9b0d6d6b8d88b2b4ec1564e", provider);
     const selectedAccount = "0x70997970C51812dc3A010C7d01b50e0d17dc79C8";
     // Load contract
     const contractAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'; // Replace with your deployed contract address
